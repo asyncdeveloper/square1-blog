@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -26,9 +27,15 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function homepage() {
+    public function homepage(Request $request) {
+        $posts = Post::with('user');
+
+        if($sortByPublicationDate = $request->sort_by === 'publication_date')
+            $posts = $posts->orderBy('publication_date', 'desc');
+
         return view('welcome', [
-            'posts' => Post::with('user')->paginate()
+            'posts' => $posts->paginate()->withQueryString(),
+            'sortByPublicationDate' => $sortByPublicationDate
         ]);
     }
 }

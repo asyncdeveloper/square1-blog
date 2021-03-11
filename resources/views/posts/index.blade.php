@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-end my-4 mr-5">
+            @include('layouts.partials.sort-by-publication-date')
+        </div>
         <h3 class="mb-5">Posts Created by You ({{ auth()->user()->name }})</h3>
         <div class="row match-my-cols mt-5">
             @forelse($posts as $post)

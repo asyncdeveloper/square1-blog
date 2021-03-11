@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-end my-4 mr-5">
+            @include('layouts.partials.sort-by-publication-date')
+        </div>
         <div class="row match-my-cols">
             @forelse($posts as $post)
                 <div class="col-md-4 box">

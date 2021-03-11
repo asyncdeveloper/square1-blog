@@ -14,8 +14,14 @@ class PostController extends Controller
     }
 
     public function index(Request $request) {
+        $posts = $request->user()->posts();
+
+        if($sortByPublicationDate = $request->sort_by === 'publication_date')
+            $posts = $posts->orderBy('publication_date', 'desc');
+
         return view('posts.index', [
-            'posts' => $request->user()->posts()->paginate()
+            'posts' => $posts->paginate()->withQueryString(),
+            'sortByPublicationDate' => $sortByPublicationDate
         ]);
     }
 
