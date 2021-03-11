@@ -1,4 +1,4 @@
-# Laravel Web blogging platform.
+# Square1 blogging platform.
 
 ## Description
 This project was built with Laravel
