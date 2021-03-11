@@ -29,7 +29,7 @@
                             <div class="form-group row">
                                 <label for="publication_date" class="col-md-4 col-form-label text-md-right">Publication Date</label>
                                 <div class="col-md-6">
-                                    <input name="publication_date" id="publication_date" class="form-control" type="date" >
+                                    <input name="publication_date" id="publication_date" class="form-control" type="datetime-local" >
                                 </div>
                             </div>
 
