@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -12,8 +13,10 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-        return view('posts.index');
+    public function index(Request $request) {
+        return view('posts.index', [
+            'posts' => $request->user()->posts()->paginate()
+        ]);
     }
 
     public function create() {

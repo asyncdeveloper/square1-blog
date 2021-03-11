@@ -73,4 +73,23 @@ class PostTest extends TestCase
 
         $this->assertDatabaseMissing('posts', $attributes);
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function loggedInUserCanViewCreatedPostsOnly()
+    {
+        $user = User::factory()->create();
+        $userPosts = Post::factory()->count(2)->create([ 'user_id' => $user->id ]);
+        $otherUserPosts = Post::factory()->count(2)->create();
+
+        $this->actingAs($user)
+            ->get(route('posts.index'))
+            ->assertSee("Posts Created by You ({$user->name})")
+            ->assertSee($userPosts->first()->title)
+            ->assertSee($userPosts->last()->title)
+            ->assertDontSee($otherUserPosts->first()->title)
+            ->assertDontSee($otherUserPosts->last()->title);
+    }
 }
