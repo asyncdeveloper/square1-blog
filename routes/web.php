@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ HomeController::class, 'homepage' ])->name('homepage');
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->only('index', 'create', 'store');
 
 Auth::routes();
 
