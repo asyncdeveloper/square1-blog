@@ -5,9 +5,10 @@
         <div class="row match-my-cols">
             @foreach($posts as $post)
                 <div class="col-md-4 box">
-                    <div class="jumbotron card">
+                    <div class="jumbotron">
                         <h2 class="">{{$post->title}}</h2>
                         <p class="lead"> {{$post->description}} </p>
+                        <small>By {{ $post->user->name }}</small>
                     </div>
                 </div>
             @endforeach
