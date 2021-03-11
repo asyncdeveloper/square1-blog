@@ -27,4 +27,16 @@ class PostTest extends TestCase
             $response->assertSeeText($post->title);
         });
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function guestUserWillSeeFallBackTextIfNoPost()
+    {
+        $response = $this->get(route('homepage'));
+
+        $response->assertStatus(200)
+            ->assertSeeText('No Posts found');
+    }
 }
