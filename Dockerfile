@@ -29,6 +29,5 @@ RUN chown -R www-data:www-data /var/www/html \
 
 ADD ./setup.sh /setup.sh
 RUN chmod +x /setup.sh
-CMD ["sh", "/setup.sh"]
 
 
