@@ -10,7 +10,7 @@ This project was built with Laravel
 ## Running the Application
 
 ### With Docker
-To run the API, you must install:
+To run the Application, you must install:
 - **Docker** (https://www.docker.com/products/docker-desktop)
 
 ```
